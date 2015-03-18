@@ -1,0 +1,20 @@
+{{#if length}}
+  <section id="main">
+    {{#if canToggle}}
+      {{input type="checkbox" id="toggle-all" checked=allTodos.allAreDone}}
+    {{/if}}
+    <ul id="todo-list">
+      {{#each item in controller}}
+        <li {{bind-attr class="item.isCompleted:completed item.isEditing:editing"}}>
+          {{#if item.isEditing}}
+            {{todo-input type="text" class="edit" value=item.bufferedTitle focus-out="doneEditing" insert-newline="doneEditing" escape-press="cancelEditing"}}
+          {{else}}
+            {{input type="checkbox" class="toggle" checked=item.isCompleted}}
+            <label {{action "editTodo" on="doubleClick"}}>{{item.title}}</label>
+            <button {{action "removeTodo"}} class="destroy"></button>
+          {{/if}}
+          </li>
+      {{/each}}
+    </ul>
+  </section>
+{{/if}}
