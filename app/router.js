@@ -10,9 +10,6 @@ Router.map(function() {
     this.route("active");
     this.route("completed");
   });
-  this.route('TodosIndex');
-  this.route('TodosActive');
-  this.route('TodosCompleted');
 });
 
 export default Router;
